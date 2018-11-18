@@ -46,4 +46,16 @@ public class StudentResource {
         return ResponseEntity.created(location).build();
 
     }
+
+    @PutMapping("/students/{id}")
+    public ResponseEntity<Object> updateStudent(@RequestBody Student student, @PathVariable long id) {
+        Optional<Student> studentOptional = studentRepository.findById(id);
+
+        if(!studentOptional.isPresent())
+            return ResponseEntity.notFound().build();
+
+        student.setId(id);
+        studentRepository.save(student);
+        return ResponseEntity.noContent().build();
+    }
 }
