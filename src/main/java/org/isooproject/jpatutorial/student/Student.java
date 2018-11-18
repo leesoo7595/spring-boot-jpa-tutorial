@@ -1,4 +1,4 @@
-package org.isooproject.jpatutorial;
+package org.isooproject.jpatutorial.student;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
