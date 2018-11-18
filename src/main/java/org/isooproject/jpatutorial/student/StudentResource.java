@@ -1,6 +1,7 @@
 package org.isooproject.jpatutorial.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,5 +29,10 @@ public class StudentResource {
         if (!student.isPresent())
             throw new StudentNotFoundException("There is no students");
         return student.get();
+    }
+
+    @DeleteMapping("/students/{id}")
+    public void deleteStudent(@PathVariable long id) {
+        studentRepository.deleteById(id);
     }
 }
